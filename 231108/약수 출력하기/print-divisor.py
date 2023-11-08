@@ -1,4 +1,10 @@
 n = int(input())
-for i in range(1, n+1):
-    if n % i == 0:
-        print(i, end=' ')
+res = []
+for i in range(1, int(n**(1/2)) + 1):
+        if (n % i == 0):
+            res.append(i) 
+            if ( (i**2) != n) : 
+                res.append(n // i)
+
+res.sort()
+print(' '.join(map(str, res)))
