@@ -8,6 +8,4 @@ def count_coins(h,w):
 for h in range(0,n-3+1):
     for w in range(0,n-3+1):
         max_val = max(max_val, count_coins(h,w))
-        if max_val == 7:
-            break
 print(max_val)
