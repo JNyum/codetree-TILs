@@ -10,6 +10,8 @@ for i in range(n):
         res[name] = score
 
 value_set = sorted(set(res.values()))
-res_key = [k for k, v in res.items() if v == value_set[1]]
-
+try:
+    res_key = [k for k, v in res.items() if v == value_set[1]]
+except:
+    res_key = list(res.keys())
 print(res_key[0])
