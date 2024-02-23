@@ -4,7 +4,7 @@ res = [list(map(int,input().split())) for _ in range(n)]
 visited = [[False]*n for _ in range(m)]
 
 def can_go(x,y):
-    return x >= 0 and x < n and y >= 0 and y < m and res[x][y] == 1
+    return x >= 0 and x < n and y >= 0 and y < m and res[x-1][y-1] == 1
 
 def dfs(x,y):
     dxs, dys= [1,0], [0,1]
