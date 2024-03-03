@@ -19,5 +19,5 @@ def dfs(start):
 
 
 
-dfs(1)
+dfs(0)
 print(count)
