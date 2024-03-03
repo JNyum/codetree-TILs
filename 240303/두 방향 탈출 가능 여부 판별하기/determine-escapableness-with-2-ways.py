@@ -6,11 +6,11 @@ dxs, dys = [0,1], [1,0]
 can = 0
 
 def in_range(x,y):
-    return x >= 0 and x <= m-1 and y >= 0 and y <= n-1
+    return x >= 0 and x <= n-1 and y >= 0 and y <= m-1
 
 def dfs(now_x, now_y):
     global can
-    if now_x == m-1 and now_y == n-1:
+    if now_x == n-1 and now_y == m-1:
         can = 1
     for dx, dy in zip(dxs, dys):
         new_x, new_y = now_x + dx, now_y + dy
