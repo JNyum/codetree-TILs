@@ -8,7 +8,7 @@ def half(ll):
     zero_sum = 0
     for i in range(n):
         zero_sum += ll[i].count(0)
-    return zero_sum < n*m // 2
+    return zero_sum <= n*m // 2
 
 def in_range(x,y):
     return 0<=x<n and 0<=y<m
