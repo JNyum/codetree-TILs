@@ -1,32 +1,71 @@
-import sys
-sys.setrecursionlimit(10**6)
+# n, m = map(int, input().split())
+# res = [list(map(int, input().split())) for _ in range(n)]
+# dxs, dys = [0,1,0,-1], [1,0,-1,0]
 
-n, m = tuple(map(int,input().split()))
-res = [list(map(int,input().split())) for _ in range(n)]
-# 오 아 왼 위
-dxs, dys = [0,1,0,-1], [1,0,-1,0]
+# def count_safe(limit):
+#     visited = [[False] * m for _ in range(n)]
+#     count = 0
 
-def in_range(x,y):
-    return 0<=x<n and 0<=y<m
+#     def dfs(x, y):
+#         if x < 0 or x >= n or y < 0 or y >= m:
+#             return
+#         if visited[x][y] or res[x][y] <= limit:
+#             return
+#         visited[x][y] = True
+#         for dx, dy in zip(dxs,dys):
+#             new_x, new_y = x + dx, y + dy
+#             dfs(new_x, new_y)
 
-def dfs(x,y):
-    visited[x][y] = True
-    for dx, dy in zip(dxs,dys):
-        new_x, new_y = x+dx, y+dy
-        if in_range(new_x,new_y) and not visited[new_x][new_y] and res[new_x][new_y] > limit:
-            dfs(new_x,new_y)
-res_count = []
-for limit in range(1,101):
-    visited = [[False]*m for _ in range(n)]
-    count = 0
-    for i in range(n):
-        for j in range(m):
-            if res[i][j] <= limit:
-                res[i][j] = 0
-            if res[i][j] > limit and not visited[i][j]:
-                dfs(i,j)
-                count += 1
-    res_count.append(count)
-max_value = max(res_count)
-index = res_count.index(max_value) + 1
-print(index, max_value)
+#     for i in range(n):
+#         for j in range(m):
+#             if not visited[i][j] and res[i][j] > limit:
+#                 dfs(i,j)
+#                 count += 1
+#     return count
+
+# max_val = 0
+# k = 0
+
+# for i in range(1, 101):
+#     safe = count_safe(i)
+#     if safe >= max_val:
+#         max_val = safe
+#         k = i
+
+# print(k, max_val)
+N, M = map(int, input().split())
+heights = [list(map(int, input().split())) for _ in range(N)]
+
+def count_safe_areas(height_limit):
+    visited = [[False] * M for _ in range(N)]
+    safe_area_count = 0
+
+    def dfs(x, y):
+        if x < 0 or x >= N or y < 0 or y >= M:
+            return
+        if visited[x][y] or heights[x][y] <= height_limit:
+            return
+        visited[x][y] = True
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        for dx, dy in directions:
+            new_x, new_y = x + dx, y + dy
+            dfs(new_x, new_y)
+
+    for i in range(N):
+        for j in range(M):
+            if not visited[i][j] and heights[i][j] > height_limit:
+                dfs(i, j)
+                safe_area_count += 1
+
+    return safe_area_count
+
+max_safe_areas = 0
+best_K = 0
+
+for K in range(1, 101):  # K의 범위는 1부터 100까지
+    safe_areas = count_safe_areas(K)
+    if safe_areas >= max_safe_areas:
+        max_safe_areas = safe_areas
+        best_K = K
+
+print(best_K, max_safe_areas)
