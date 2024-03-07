@@ -12,15 +12,21 @@ def in_range(x,y):
 def bfs():
     while queue:
         x,y = queue.popleft()
+        if not in_range(x,y):
+            continue
+        if visited[x][y]:
+            continue
+        if res[x][y] != 1:
+            continue
+
         visited[x][y] = True
         if x == n-1 and y == m-1:
             return 1
         for dx,dy in zip(dxs, dys):
             new_x, new_y = x+dx, y+dy
-            if in_range(new_x,new_y) and not visited[new_x][new_y] and res[new_x][new_y] == 1:
-                queue.append((new_x,new_y))
+            queue.append((new_x,new_y))
     return 0
 
 queue.append((0,0))
-visited[0][0] = True
+# visited[0][0] = True
 print(bfs())
