@@ -17,4 +17,5 @@ for i in range(x1,x2+1):
             min_y = min(min_y,j)
             max_x = max(max_x,i)
             max_y = max(max_y,j)
-print((max_x-min_x)*(max_y-min_y))
+# print(max_x, min_x, max_y, min_y)
+print((max_x-min_x)*(max_y-min_y) if (min_x,min_y,max_x,max_y) != (2001,2001,0,0) else 0)
