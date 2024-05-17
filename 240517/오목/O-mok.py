@@ -20,7 +20,7 @@ def leftup_win(x,y,color):
     return True
 def rightup_win(x,y,color):
     for i in range(5):
-        if matrix[x+2-i][y+2-i] != color:
+        if matrix[x+2-i][y-2+i] != color:
             return False
     return True
 
