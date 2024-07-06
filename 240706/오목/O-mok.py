@@ -51,6 +51,7 @@ def win():
                 if leftdown_win(i,j,num):
                     print(num)
                     print(i+3,j-1)
+                    return
     print(0)
     return
 win()
