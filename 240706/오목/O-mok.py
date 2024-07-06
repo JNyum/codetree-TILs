@@ -47,22 +47,18 @@ def win():
                 if row_win(i,j,num):
                     print(num)
                     print(i+1,j+3)
-                    print(1)
                     return
                 if col_win(i,j,num):
                     print(num)
                     print(i+3,j+1)
-                    print(2)
                     return
                 if leftup_win(i,j,num):
                     print(num)
                     print(i+3,j+3)
-                    print(3)
                     return
                 if leftdown_win(i,j,num):
                     print(num)
                     print(i+3,j-1)
-                    print(4)
                     return
     print(0)
     return
