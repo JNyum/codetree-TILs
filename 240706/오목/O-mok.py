@@ -15,16 +15,22 @@ def col_win(x,y,num):
             return False
     return True
 
+def leftup_win(x,y,num):
+    for i in range(5):
+        if in_range(x+i,y+i) and matrix[x+i][y+i] != num:
+            return False
+    return True
 
-# def win(x,y,num):
-#     if row_win(i,j,num):
-#         print(num)
-#         print(i+1,j+3)
-#         return
-#     if col_win(i,j,num):
-#         print(num)
-#         print(i+3,j+1)
-#         return
+def leftdown_win(x,y,num):
+    for i in range(5):
+        if in_range(x+i,y-i) and matrix[x+i][y-i] != num:
+            return False
+    return True
+
+
+
+
+
 def win():
     for i in range(19):
         for j in range(19):
@@ -38,6 +44,13 @@ def win():
                     print(num)
                     print(i+3,j+1)
                     return
+                if leftup_win(i,j,num):
+                    print(num)
+                    print(i+3,j+3)
+                    return
+                if leftdown_win(i,j,num):
+                    print(num)
+                    print(i+3,j-1)
     print(0)
     return
 win()
