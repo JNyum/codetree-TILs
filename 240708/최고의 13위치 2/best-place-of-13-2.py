@@ -13,7 +13,7 @@ for i in range(n):
     for j in range(n-2):
         for a in range(n):
             for b in range(n-2):
-                if i == a and j <= b <= j+2:
+                if (i == a and j <= b <= j+2) or (i == a and b <= j <= b+2):
                     continue
                 else:
                     count = coins(i,j) + coins(a,b)
