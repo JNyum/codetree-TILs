@@ -11,10 +11,13 @@ def get_height():
                 height = i-1
                 return height
 
-height = get_height()
-
-for i in range(k-1,m+1):
-    matrix[height][i] = 1
-
-for matrix_ in matrix:
-    print(' '.join(map(str,matrix_)))
+if n == 1:
+    for i in range(k-1,m):
+        matrix[i] = 1
+    print(' '.join(map(str,matrix)))
+else:
+    height = get_height()
+    for i in range(k-1,m+1):
+        matrix[height][i] = 1
+    for matrix_ in matrix:
+        print(' '.join(map(str,matrix_)))
