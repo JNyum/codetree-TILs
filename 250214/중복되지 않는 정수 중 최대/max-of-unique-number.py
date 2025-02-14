@@ -3,7 +3,7 @@ nums = list(map(int, input().split()))
 
 # Write your code here!
 # 1. 중복 확인 함수
-duplicate = [nums[0]]
+duplicate = []
 not_duplicate = []
 
 def is_it_duplicated(num):
@@ -16,10 +16,11 @@ def is_it_duplicated(num):
         return False
 
 
-for num in nums[1:]:
+for num in nums:
     if is_it_duplicated(num):
         continue
     else:
+        duplicate.append(num)
         not_duplicate.append(num)
 
 max_val = -1
