@@ -3,20 +3,29 @@ nums = list(map(int, input().split()))
 
 # Write your code here!
 # 1. 중복 확인 함수
-duplicate = []
+duplicate = [nums[0]]
+not_duplicate = []
+
 def is_it_duplicated(num):
     if num in duplicate:
+        if num in not_duplicate:
+            not_duplicate.pop(not_duplicate.index(num))
         return True
     else:
         duplicate.append(num)
         return False
 
-# 2. 반복문
+
+for num in nums[1:]:
+    if is_it_duplicated(num):
+        continue
+    else:
+        not_duplicate.append(num)
+
 max_val = -1
-for num in nums:
-    if num >= max_val:
-        if is_it_duplicated(num):
-            max_val = -1
-        else:
+
+if not_duplicate:
+    for num in not_duplicate:
+        if num > max_val:
             max_val = num
 print(max_val)
